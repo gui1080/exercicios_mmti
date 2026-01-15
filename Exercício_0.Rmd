@@ -1,0 +1,205 @@
+---
+title: "Exercício 0 - Sessão 2 de Mentoria MMTI - 2026"
+output:
+  pdf_document:
+    latex_engine: lualatex
+---
+
+# Pedra, Papel ou Tesoura
+
+## Exercício 1
+
+Escreva uma função em Python que receba dois argumentos: a jogada do *Jogador A* e a jogada do *Jogador B*. Para ambos os jogadores, as opções válidas para o jogo são as seguintes:
+
+-   `Pedra`
+
+-   `Papel`
+
+-   `Tesoura`
+
+*Como strings de Python*. A função deve retornar qual jogador ganhou, o A ou o B.
+
+Lembre-se das regras:
+
+-   Pedra ganha de Tesoura
+
+-   Tesoura ganha de Papel
+
+-   Papel ganha de Pedra
+
+**Dica:**
+
+```{python}
+
+# Sua função vai ser mais ou menos assim:
+
+def Jogo(mov_jogador_A, mov_jogador_B):
+  
+  # aqui entra sua lógica de programação
+  
+  return "Jogador A" # Caso o movimento do Jogador A seja o ganhador
+  
+  # ou
+  
+  return "Jogador B" # Caso o movimento do Jogador B seja o ganhador
+
+```
+
+Logo, caso eu execute:
+
+```{python}
+
+resultado_jogo = Jogo("Pedra", "Tesoura")
+#print(resultado_jogo)
+```
+
+Isso deve retornar `Jogador A` rodando o `print`, pois o movimento Pedra ganha de Tesoura.
+
+Porém, caso eu faça:
+
+```{python}
+
+resultado_jogo = Jogo("Tesoura", "Pedra")
+#print(resultado_jogo)
+```
+
+Isso deve retornar `Jogador B` no *print*, pois esse jogador foi o ganhador.
+
+Mas, no caso:
+
+```{python}
+
+resultado_jogo = Jogo("Tesoura", "Tesoura")
+#print(resultado_jogo)
+```
+
+O resultado mostrado no *print* deve ser de `Empate`.
+
+## Exercício 2
+
+Alice estava sozinha em casa e ela começou a ponderar: *"Nossa, gostaria de jogar Pedra, Papel e Tesoura mas não tenho ninguém aqui comigo. Será que consigo jogar contra o computador?"*
+
+Tendo a função do Exercício 1 em mãos, ela decide que quer jogar contra o **próprio computador**.
+
+Ajude a Alice a atualizar o seu código! Ao invés da função receber o resultado assim:
+
+```{python}
+
+resultado_jogo = Jogo("Tesoura", "Pedra")
+#print(resultado_jogo)
+```
+
+A função deve receber o que a Alice digitou no computador, ela vai ser o `Jogador A`. Porém, ela vai jogar contra a sorte, logo o movimento do `Jogador B` deve ser aleatório.
+
+**Dica: use variáveis!**
+
+```{python}
+
+movimento_alice = 0 # Atualize pare receber o que digitarmos no computador
+movimento_aleatorio = 0 # Atualize para receber um valor aleatório entre Pedra, Papel e Tesoura
+
+resultado_jogo = Jogo(movimento_alice, movimento_aleatorio)
+#print(resultado_jogo)
+```
+
+**Dica extra**: busque no Google como eu posso escolher um número aleatório no Python. É importante saber buscar funções do Python na medida do necessário, afinal é impossível decorarmos tudo!
+
+## Exercício 3
+
+A Alice chamou seu amigo Bob para casa. Porém, o Bob é uma pessoa *desagradável* e não gosta de seguir as regras do jogo proposto. Ela compartilha seu laptop para mostrar a função que permite que ela jogue contra o computador, mas Bob decide digitar outra *string* que não estava prevista nas regras do jogo.
+
+Atualize o código para que um erro seja retornado ao usuário caso a entrada da função não seja `Pedra`, `Papel` ou `Tesoura`.
+
+**Dica:**
+
+```{python}
+
+movimento_bob = 0 # Atualize essa variável: Bob escreveu algo que não é Pedra, Papel e nem Tesoura.
+movimento_aleatorio = 0 # Atualize essa variável: Aqui vai algo aleatório entre Pedra, Papel e Tesoura
+
+resultado_jogo = Jogo(movimento_bob, movimento_aleatorio)
+#print(resultado_jogo)
+```
+
+*O que deve ser mostrado na tela é uma mensagem de erro, que diz que Bob não sabe brincar!*
+
+## Exercício 4
+
+O Bob é insistente, ele diz que ganha do laptop mais do que perde. Ele jogou 10 vezes, e dessas 10 vezes, ele ganhou 6. Já a Alice, das 10 vezes que jogou contra o computador, ela perdeu todas!
+
+O Bob disse que o grande segredo do jogo é jogar sempre `Pedra`. A Alice disse que isso não faz sentido, mas Bob não acredita nela!
+
+**Demonstre quantas vezes um jogador ganha da máquina (jogada aleatória) se você jogar Pedra em 1 milhão de jogos diferentes!**
+
+**Dica**: Use um *loop* `for` ou um *loop* `while` e não mostre o resultado do jogo. Apenas use uma variável para fazer a contagem de quantas vezes o `Jogador A` (que sempre joga Pedra) ganhou do `Jogador B` (que joga um movimento aleatório).
+
+```{python,results='hide', message=FALSE, warning=FALSE}
+
+for i in range(1000000):
+  
+  # a variável "i" vai contar 0, 1, 2, até 1 milhão!
+  # Para cada vez que a variável i muda, rode um jogo de Pedra, Papel e Tesoura novo.
+  # Quantas vezes a Pedra ganha?
+  pass # retire esse comando: ele não faz nada além de passar a iteração do loop for
+
+```
+
+Curiosidade: *Uma **simulação de Monte Carlo** é uma técnica estatística baseada em repetição e aleatoriedade para estudar o comportamento de um sistema quando não é prático ou trivial analisá-lo de forma puramente analítica. O nome tem origem no Cassino Monte Carlo em Mônaco.* *No nosso caso, não precisamos simular para ver o resultado, mas queremos que a simulação comprove nossa linha de raciocício.*
+
+*A ideia central é simples: executar o mesmo experimento muitas vezes, variando entradas de forma aleatória, e observar a distribuição dos resultados. Com isso, propriedades como probabilidades, médias e frequências emergem empiricamente pela **Lei dos Grandes Números**. Apesar de ser conceitualmente simples, esse método é extremamente poderoso e aparece em áreas como finanças, física, otimização, jogos e aprendizado de máquina.*
+
+*No contexto de pedra-papel-tesoura, a simulação de Monte Carlo permite mostrar, de forma objetiva, que ao repetir milhares de partidas contra um oponente aleatório, nenhuma jogada fixa (como sempre jogar pedra) apresenta vantagem estatística sobre as demais — todas convergem para o mesmo desempenho médio.*
+
+De forma analítica:
+
+Se o oponente joga **aleatoriamente**, escolhendo **Pedra, Papel ou Tesoura aleatóriamente com probabilidade igual (1/3 cada)**, então ao **sempre jogar pedra**:
+
+-   Vitória: o oponente joga **tesoura** → **1/3**
+
+-   Derrota: o oponente joga **papel** → **1/3**
+
+-   Empate: o oponente joga **pedra** → **1/3**
+
+Portanto:
+
+-   **Chance de ganhar:** **1/3 ≈ 33,33%**
+
+-   **Chance de perder:** **1/3**
+
+-   **Chance de empatar:** **1/3**
+
+*O número da simulação mostra isso?*
+
+## Exercício Bônus - Desafio!
+
+Bob não gostou de jogar **Pedra, Papel e Tesoura** contra o computador. Ainda mais depois que ele descobriu que sua estratégia infalível de sempre jogar `Pedra` era, na verdade, absolutamente falha.
+
+Bob então decide propor um novo jogo: Pedra, Papel, Tesoura, Lagarto e Spock.
+
+As regras são as seguintes:
+
+	•	Tesoura corta Papel
+
+	•	Papel cobre Pedra
+
+	•	Pedra esmaga Lagarto
+
+	•	Lagarto envenena Spock
+
+	•	Spock quebra Tesoura
+
+	•	Tesoura decapita Lagarto
+
+	•	Lagarto come Papel
+
+	•	Papel refuta Spock
+
+	•	Spock vaporiza Pedra
+
+	•	Pedra quebra Tesoura
+
+Alice e Bob jogam algumas vezes e se dão conta de que esse jogo parece muito com o antigo: cada movimento ganha de outros 2 movimentos , e perde para outros 2 movimentos. Ou seja, é **simétrico,** com um número ímpar de jogadas possíveis.
+
+Bob então programa uma solução para esse exercício em Python e logo ele decide se gabar: **"A lógica da minha função para resolver esse problema tem menos de 5 linhas!"**. Mas Alice não acredita no Bob.
+
+Pondere, ou pergunte para o ChatGPT: *"Seria isso possível?"*

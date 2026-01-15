@@ -1,0 +1,46 @@
+---
+title: "Exercício 1"
+output: html_document
+---
+
+<https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification/data>
+
+# Os Celulares da Alice
+
+Alice é uma jovem empreendedora brasileira que sonha em desbancar as grandes empresas de celulares como a Apple e a Samsung. Seu sonho é empreender providenciando celulares de qualidade feitos no Brasil. Com muita pesquisa, eles obtiveram um protótipo. Dificilmente esse celular vai agradar a todos, mas esperam que ele tenha seu lugar no mercado.
+
+## Parte 1 - Análise de Mercado
+
+O problema é que, para sequer eles conseguirem ter uma chance de se dar bem nesse mercado tão competitivo, eles precisam saber em qual segmento eles se encontram. Para isso, ir no shopping anotar os celulares da loja não basta, eles precisam ir atrás da internet toda ver o que um consumidor veria ao buscar um celular. Alice chama seu amigo Bob, especialista de mercado na área, que providencia uma lista dos 2000 celulares mais vendidos no Brasil.
+
+Ao final, Alice tem uma lista de celulares e suas características: altura da tela, largura da tela, quanta memória RAM o celular tem, entre outros atributos relevantes. E ainda mais importante, cada celular tem a informação da categoria do preço do dispositivo: **Low Cost** (*custo baixo*), **High Cost** (*custo alto*) e **Very High Cost** (*custo muito alto*).
+
+Pergunta a-
+
+Pergunta b-
+
+Pergunta c-
+
+Pergunta d-
+
+## Parte 2 - O Celular do Alice
+
+A Alice quer faturar muito. Em suas pesquisas de mercado com o Bob, ela chega na conclusão que a melhor forma de fazer isso é focar sua empresa em um primeiro momento no segmento de celulares **Low Cost**. Os celulares de baixo custo deixam muito a desejar, e ela quer providenciar um produto de sucesso para essa categoria!
+
+Com isso em mente Alice constói o *AlicePhone 1* para vender em lojas online. Esse celular não promete revolucionar o mercado, mas é esperado que esse produto vai ser melhor do que os *concorrentes nessa categoria de baixo custo*.
+
+O AlicePhone 1 tem as seguintes características:
+
+-   x de ram
+
+-   a
+
+-   a
+
+-   a
+
+#### Responda:
+
+-   A Alice tem boas chances de ter um negócio de sucesso vendendo telefones de baixo custo?
+
+-   Qual seriam as melhores configurações para o *AlicePhone 2*, caso venha a existir no futuro?
