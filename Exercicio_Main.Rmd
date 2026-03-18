@@ -1,46 +1,132 @@
 ---
-title: "Exercício 1"
-output: html_document
+title: "Exercício de Análise de Dados - Mentoria MMTI - 2026"
+output:
+  pdf_document:
+    latex_engine: lualatex
 ---
 
-<https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification/data>
+# Usando Dados para Responder Perguntas
 
-# Os Celulares da Alice
+O objetivo dessa tarefa é pegar uma massa de dados e resolver perguntas simples acerca do domínio proposto. Uma plataforma muito útil para se obter dados com a finalidade de treinar novas habilidades é o *Kaggle*. O intuito de buscarmos novos dados no *Kaggle* é tentar simular dados reais de forma fácil e acessível, além de compartilharmos soluções e métodos de implementação de análises e modelos. Explore o site e veja quais os recursos disponíveis!
 
-Alice é uma jovem empreendedora brasileira que sonha em desbancar as grandes empresas de celulares como a Apple e a Samsung. Seu sonho é empreender providenciando celulares de qualidade feitos no Brasil. Com muita pesquisa, eles obtiveram um protótipo. Dificilmente esse celular vai agradar a todos, mas esperam que ele tenha seu lugar no mercado.
+Dados reais são complexos e muitas vezes não refletem ambientes propostos por exemplos simples da literatura de ciência de dados aplicada. Por exemplo, se estou analizando dados médicos de pacientes em um tratamento, pode ser que eu tenha que lidar com dados perdidos, dados mal coletados em postos de saúde, ou até mesmo tem que lidar com dados mal transcritos entre prontuários e sistemas informatizados. O mundo real nos instiga a lidar de diferentes formas com a **qualidade** dos dados que temos em mãos.
 
-## Parte 1 - Análise de Mercado
+Em ambiente corporativo, buscar dados é um problema à parte. Envolve confiabilidade, busca em sistemas legado e sistemas novos, catalogação e documentação interna. Até mesmo instigar procesoss internos para de coleta contínua para extraírmos e tratarmos os dados nós mesmos.
 
-O problema é que, para sequer eles conseguirem ter uma chance de se dar bem nesse mercado tão competitivo, eles precisam saber em qual segmento eles se encontram. Para isso, ir no shopping anotar os celulares da loja não basta, eles precisam ir atrás da internet toda ver o que um consumidor veria ao buscar um celular. Alice chama seu amigo Bob, especialista de mercado na área, que providencia uma lista dos 2000 celulares mais vendidos no Brasil.
+Nesse exercício nosso dado de estudo é *público* e *teórico*, e considerado de *alta qualidade*. Como um pontapé inicial, é necessário entrar na plataforma do *Kaggle* e baixar esse conjunto de dados.
 
-Ao final, Alice tem uma lista de celulares e suas características: altura da tela, largura da tela, quanta memória RAM o celular tem, entre outros atributos relevantes. E ainda mais importante, cada celular tem a informação da categoria do preço do dispositivo: **Low Cost** (*custo baixo*), **High Cost** (*custo alto*) e **Very High Cost** (*custo muito alto*).
+![](images/Screenshot 2026-03-18 at 17-10-22 Mobile Price Classification.png)
 
-Pergunta a-
+O arquivo é o `train.csv` (deve ser selecionado no canto da tela), que pode ser baixado no botão com a seta para baixo no canto inferior direito da imagem.
 
-Pergunta b-
+![](images/clipboard-405511278.png)
 
-Pergunta c-
+Segue o [link](https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification/data).
 
-Pergunta d-
+*Dica: explore as descrições das colunas do Kaggle para saber o que é o que nesse conjunto de dados. Visite os fóruns desse conjunto de dados, leia os notebooks da comunidade.*
 
-## Parte 2 - O Celular do Alice
+Essa tarefa deve ser feita com a ferramenta **Google Colab** em **Python**, importando a biblioteca **Pandas**.
 
-A Alice quer faturar muito. Em suas pesquisas de mercado com o Bob, ela chega na conclusão que a melhor forma de fazer isso é focar sua empresa em um primeiro momento no segmento de celulares **Low Cost**. Os celulares de baixo custo deixam muito a desejar, e ela quer providenciar um produto de sucesso para essa categoria!
+Se você já subiu o arquivo em seu diretório você pode rodar:
 
-Com isso em mente Alice constói o *AlicePhone 1* para vender em lojas online. Esse celular não promete revolucionar o mercado, mas é esperado que esse produto vai ser melhor do que os *concorrentes nessa categoria de baixo custo*.
+```{import pandas as pd}
 
-O AlicePhone 1 tem as seguintes características:
+df = pd.read_csv('/content/train.csv')
 
--   x de ram
+# Visualizar
+df.head()
+```
 
--   a
+Ou subindo o arquivo na execução:
 
--   a
+```{from google.colab import files}
 
--   a
+uploaded = files.upload()
+
+import pandas as pd
+df = pd.read_csv('train.csv')
+
+df.head()
+```
+
+*Use ferramentas de IA, mas não dependa delas.*
+
+## Os Celulares da Alice
+
+Alice é uma jovem empreendedora brasileira que sonha em desbancar as grandes empresas de celulares como a Apple e a Samsung. Seu sonho é empreender providenciando celulares de qualidade feitos no Brasil. Com muita pesquisa, Alice obtive um protótipo. Dificilmente esse celular vai agradar a todos, mas se espera que este produto tenha seu lugar no mercado. Ou seja, ele existe frente aos seus competidores de categoria.
+
+### Parte 1 - Análise de Mercado
+
+O problema é que, para Alice sequer conseguir ter uma chance de se dar bem nesse mercado tão competitivo, é necessário entender em qual segmento eles se encontram. Para isso, ir no shopping anotar os celulares da loja não basta, é necessário ir atrás da internet toda ver o que um consumidor veria ao buscar um celular. Estamos falando do mercado **inteiro**. Alice chama seu amigo Bob, especialista de mercado na área, que providencia uma lista dos 2000 celulares mais vendidos no Brasil.
+
+Ao final, Alice tem uma lista de celulares e suas características: altura da tela, largura da tela, quanta memória RAM o celular tem, entre outros atributos relevantes. E ainda mais importante, cada celular tem a informação da categoria do preço do dispositivo: **Low Cost** (*custo baixo*), Medium Cost (*custo médio*), **High Cost** (*custo alto*) e **Very High Cost** (*custo muito alto*).
+
+Este é o documento que você tem em mãos *(baixado do Kaggle)*. Ajude a Alice a entender os competidores.
+
+Observação: a categoria do produto se encontra na coluna prince_range. As categorias são as seguintes:
+
+-   0 nessa coluna significa que o celular é **Low Cost;**
+
+-   1 é **Medium Cost;**
+
+-   2 é **High Cost;**
+
+-   3 é **Very High Cost.**
+
+#### Pergunta A
+
+Quantas linhas esse conjunto de dados possui? Existe algum campo desse conjunto de dados em branco?
+
+#### Pergunta B
+
+Quantos celulares tem cameras primárias com mais de 18 mega pixels (coluna `pc`)?
+
+#### Pergunta D
+
+Qual o valor máximo e mínimo dos valores em `battery_power` ?
+
+#### Pergunta D
+
+Qual a média dos valores da coluna de `ram` ? Observação: trata-se de quanta memória o celular tem.
+
+#### Pergunta E
+
+Qual a média dos valores da coluna de `ram` especificamente levando em conta dispositivos **High Cost** (coluna `price_range`)?
+
+#### Pergunta F
+
+Quantos celulares tem 4g?
+
+#### Pergunta G
+
+Entre os celulares que tem 4g, a maioria é de qual categoria de `price_range`?
+
+#### Pergunta H
+
+O celular que tem mais memória ram (coluna `ram`) tem quantos cores (coluna `n_cores`)?
+
+#### Pergunta I
+
+Veja todos os celulares que tem bluetooth (coluna `blue`) e wifi (coluna `wifi`).
+
+#### Pergunta J
+
+Quantos celulares existem em cada `price_range` ? Dica: comando de *group by*.
+
+### Parte 2 - O Celular do Alice
+
+A Alice quer faturar muito logo no começo da emrpesa. Em suas pesquisas de mercado com o Bob e nas respostas que você deu para eles dois, ela chega na conclusão que a melhor forma de fazer isso é focar sua empresa em um primeiro momento no segmento de celulares **Low Cost**. Alice acha que celulares de baixo custo deixam muito a desejar, e ela quer providenciar um produto de sucesso para essa categoria!
+
+Com isso em mente Alice vai lançar em breve o *AlicePhone 1* para vender em lojas online. Esse celular não promete revolucionar o mercado, mas é esperado que esse produto vai ser melhor do que os *concorrentes nessa categoria de baixo custo*.
+
+O **AlicePhone 1** tem alguns *requisitos mínimos* logo de cara:
+
+-   Precisa ter wifi (coluna `wifi`).
+
+-   Precisa ter tela touch (coluna `touch_screen`)
+
+Sem isso, o produto vai falhar! De resto, Alice quer saber qual celular ela deve projetar.
 
 #### Responda:
 
--   A Alice tem boas chances de ter um negócio de sucesso vendendo telefones de baixo custo?
-
--   Qual seriam as melhores configurações para o *AlicePhone 2*, caso venha a existir no futuro?
+-   Qual seriam as melhores configurações para o *AlicePhone 1*? Exponha o racional da resposta baseado nos dados.
